@@ -1,0 +1,9 @@
+.city-info li {
+    padding: 30px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+  }

@@ -1,0 +1,106 @@
+.bio-part {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border: 1px dotted #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .bio-img-location {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bio-img-location img {
+    width: 150px;
+    border-radius: 50%;
+  }
+
+  .bio-login-website {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .bio-login-website a {
+    display: inline-flex;
+    padding: 5px 15px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+  }
+
+  .user-counting-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dotted #ccc;
+    gap: 10px;
+    margin: 10px auto;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+
+  .user-counting-info li {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+  }
+
+  .user-counting-info li.follower {
+    background-color: #dc3545;
+  }
+
+  .user-counting-info li.following {
+    background-color: #f4f4f4;
+    color: black;
+  }
+
+  .user-counting-info li.public-repos {
+    background-color: #28a745;
+  }
+
+  .user-counting-info li.public-gists {
+    background-color: #333333;
+  }
+
+  .repositories li {
+    border: 1px dotted #ccc;
+    padding: 15px;
+    color: crimson;
+    font-weight: bold;
+    margin: 10px auto;
+  }
+
+  /* back to search page */
+  .back-to-search {
+    background-color: #f6f6f6;
+    text-decoration: none;
+    padding: 12px 32px;
+    display: inline-flex;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    color: black;
+  }
+
+  /* responsive part */
+  @media (max-width: 700px) {
+    .bio-part {
+      flex-direction: column;
+    }
+    .bio-login-website {
+      align-self: start;
+    }
+  }
