@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  ul,
+  li {
+    list-style-type: none;
+  }
+
+  /* defining and use roboto font in totall website */
+  @font-face {
+    font-family: "my-font";
+    src: url(../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
+  }
+
+  body {
+    font-family: my-font;
+  }
+
+/* defigning menu style */
+.header {
+width: 100%;
+height: 60px;
+background-color: crimson;
+}
+
+.header nav ul {
+list-style-type: none;
+display: flex;
+align-items: center;
+gap: 20px;
+padding-left: 80px;
+width: 100%;
+height: 60px;
+opacity: 0.8;
+}
+
+.header ul li a {
+text-decoration: none;
+color: white;
+padding: 15px;
+font-size: 18px;
+}
+
+/* style to form elements */
+.form-part input {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.form-part button {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  font-size: 18px;
+  color: white;
+  margin: 20px 0px;
+  border: none;
+  cursor: pointer;
+}
+
+/* designing main part of the page */
+.main-part {
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto;
+  }
+
+  /* show error in page */
+  .error {
+    width: 100%;
+    height: 50px;
+    background-color: #eee;
+    padding-left: 20px;
+    line-height: 50px;
+    margin-bottom: 20px;
+  }
+
+  /* clear search results */
+  .clear {
+    width: 100%;
+    background-color: #ddd;
+    border: none;
+    outline: 0;
+    height: 40px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  /* show clear buttom */
+  .clear:has(+ li) {
+    display: flex;
+  }
+
+  .loader {
+    grid-column: 1 / -1;
+    width: 60px;
+    height: 60px;
+    border: 10px solid rgba(30, 143, 255, 0.478);
+    border-top-color: dodgerblue;
+    border-radius: 50%;
+    margin: 70px auto;
+    animation: loader 1s infinite linear;
+  }
+
+  @keyframes loader {
+    from {
+      transform: rotate(0deg);
+    }
+
+    from {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* style to a and button tags */
+  a:hover, button:hover{
+    opacity: .8;
+  }
+
+  /* responsive part */
+  @media (max-width: 700px) {
+    .header nav ul {
+        justify-content: center;
+        padding-left: 0px;
+        gap: 10px;
+    }
+  }

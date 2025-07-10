@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog and Digital Clock</title>
+    <link rel="stylesheet" href="style/share-style.css" />
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: calc(100vh - 60px);
+        background-color: #f3f3f3;
+      }
+
+      /* style to analog clock */
+      .analog-clock {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        position: absolute;
+        background: white;
+      }
+
+      .analog-clock .number {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transform: rotate(calc(var(--i) * 30deg));
+      }
+
+      .number span {
+        display: inline-block;
+        transform: rotate(calc(var(--i) * -30deg));
+      }
+
+      .analog-clock .hand {
+        position: absolute;
+        background-color: black;
+        border-radius: 5px 5px 0 0;
+        left: 50%;
+        bottom: 50%;
+        transform-origin: bottom;
+        transform: translate(-50%);
+      }
+
+      .analog-clock .hour {
+        height: 25%;
+        width: 10px;
+      }
+
+      .analog-clock .minute {
+        height: 30%;
+        width: 5px;
+      }
+
+      .analog-clock .second {
+        height: 35%;
+        width: 3px;
+        background: #d2a43a;
+      }
+
+      #small-circle {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: black;
+        border: 2px solid white;
+        left: 50%;
+        bottom: 48%;
+        transform: translateX(-50%);
+      }
+
+      /* style to digital clock */
+      .digital-clock {
+        width: 300px;
+        height: 50px;
+        position: relative;
+        top: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- menu part -->
+    <header class="header">
+      <nav>
+        <ul>
+          <li><a href="index.html">Github users</a></li>
+          <li><a href="weather.html">Weather</a></li>
+          <li><a href="#">Time</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="analog-clock">
+        <div class="number" style="--i: 1">
+          <span>1</span>
+        </div>
+        <div class="number" style="--i: 2">
+          <span>2</span>
+        </div>
+        <div class="number" style="--i: 3">
+          <span>3</span>
+        </div>
+        <div class="number" style="--i: 4">
+          <span>4</span>
+        </div>
+        <div class="number" style="--i: 5">
+          <span>5</span>
+        </div>
+        <div class="number" style="--i: 6">
+          <span>6</span>
+        </div>
+        <div class="number" style="--i: 7">
+          <span>7</span>
+        </div>
+        <div class="number" style="--i: 8">
+          <span>8</span>
+        </div>
+        <div class="number" style="--i: 9">
+          <span>9</span>
+        </div>
+        <div class="number" style="--i: 10">
+          <span>10</span>
+        </div>
+        <div class="number" style="--i: 11">
+          <span>11</span>
+        </div>
+        <div class="number" style="--i: 12">
+          <span>12</span>
+        </div>
+        <!-- clock hands -->
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="hand second"></div>
+
+        <div id="small-circle"></div>
+      </div>
+      <div class="digital-clock"></div>
+    </div>
+    <script>
+      // select DOM elements
+      const hourHand = document.querySelector(".hour");
+      const minuteHand = document.querySelector(".minute");
+      const secondHand = document.querySelector(".second");
+      const digitalClockElement = document.querySelector(".digital-clock");
+
+      function setRotation(hand, rotation) {
+        hand.style.transform = `rotate(${rotation * 360}deg)`;
+      }
+
+      function updateClock() {
+        const currentDate = new Date();
+        const second = currentDate.getSeconds();
+        const minute = currentDate.getMinutes();
+        const hour = currentDate.getHours();
+        const secondsRotation = second / 60;
+        const minutesRotation = (minute * 60) / 3600;
+        const hoursRotation = (minute + (hour % 12) * 60) / 720;
+        setRotation(secondHand, secondsRotation);
+        setRotation(minuteHand, minutesRotation);
+        setRotation(hourHand, hoursRotation);
+        digitalClockElement.innerHTML = digitalClock(hour, minute, second);
+      }
+
+      //digital clock
+      function digitalClock(hour, minute, second) {
+        //set AM and PM based on hour
+        const dayNight = hour >= 0 && hour <= 11 ? "AM" : "PM";
+        //convert hour to 12 hr format
+        hour = hour % 12 === 0 ? 12 : hour % 12;
+        //add 0 before hour, minute & second if needed
+        hour = hour < 10 ? "0" + hour : hour;
+        minute = minute < 10 ? "0" + minute : minute;
+        second = second < 10 ? "0" + second : second;
+
+        const time = hour + ":" + minute + ":" + second + " " + dayNight;
+        return time;
+      }
+
+      //call updateClock function on page load
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
