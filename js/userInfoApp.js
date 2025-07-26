@@ -36,12 +36,12 @@
 
    bioImgLocationElement.innerHTML = `
        <img src=${user["avatar_url"]}></img>
-       <p>${user["login"]}</p>
+       <p>${user["name"]}</p>
        <p>${user["location"]}</p>`;
    bioLoginWebElement.innerHTML = `
        <h3>Bio:</h3>
        <p>${user["bio"]}</p>
-       <a href="">Visit Github Page</a>
+       <a href="${user["html_url"]}">Visit Github Page</a>
        <p>Login:${user["login"]}</p>
        <p>Website:${user["blog"]}</p>`;
 
@@ -58,9 +58,9 @@
    const response = await fetch(`${updatedRepositoryUrl}`);
    const allRepos = await response.json();
    allRepos.forEach((repo) => {
-     repositoriesElement.innerHTML += `<li>
+     repositoriesElement.innerHTML += `<li><a href=${repo["html_url"]}>
            ${repo["name"]}
-           </li>`;
+           </a></li>`;
    });
  };
 

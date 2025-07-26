@@ -79,9 +79,13 @@
   .repositories li {
     border: 1px dotted #ccc;
     padding: 15px;
-    color: crimson;
     font-weight: bold;
     margin: 10px auto;
+  }
+
+  .repositories li a{
+    color: crimson;
+    text-decoration: none;
   }
 
   /* back to search page */
